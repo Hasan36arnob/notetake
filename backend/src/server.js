@@ -63,7 +63,10 @@ const app = express();
 const PORT = process.env.PORT || 5001;
 
 app.use(cors({
-  origin: "http://localhost:5173",
+  origin: [
+    // for local development
+    "https://notetake-456v.vercel.app" // for deployed frontend
+  ],
 }));
 
 app.use(express.json());
@@ -75,6 +78,5 @@ connectDB().then(() => {
     console.log("Server started on PORT:", PORT);
   });
 });
-
 
 export default app;
